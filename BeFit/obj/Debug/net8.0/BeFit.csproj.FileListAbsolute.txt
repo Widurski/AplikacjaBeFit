@@ -282,3 +282,4 @@
 /home/solaris/Dokumenty/befit/aplkacjaBeFit/BeFit/obj/Debug/net8.0/BeFit.pdb
 /home/solaris/Dokumenty/befit/aplkacjaBeFit/BeFit/obj/Debug/net8.0/BeFit.genruntimeconfig.cache
 /home/solaris/Dokumenty/befit/aplkacjaBeFit/BeFit/obj/Debug/net8.0/ref/BeFit.dll
+/home/solaris/Dokumenty/befit/aplkacjaBeFit/BeFit/obj/Debug/net8.0/BeFit.sourcelink.json

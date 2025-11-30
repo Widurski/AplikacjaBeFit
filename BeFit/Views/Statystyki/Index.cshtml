@@ -4,29 +4,39 @@
     ViewData["Title"] = "Statystyki";
 }
 
-<h2>Statystyki treningowe (Ostatnie 4 tygodnie)</h2>
+<div class="retro-box">
+    <h2>:: STATYSTYKI (OSTATNIE 4 TYGODNIE) ::</h2>
+    <p>Analiza postępów użytkownika.</p>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nazwa ćwiczenia</th>
-            <th>Liczba serii</th>
-            <th>Łączny ciężar (Objętość)</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NazwaCwiczenia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IloscWykonan)
-            </td>
-            <td>
-                @item.SumaCiezaru kg
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" style="border: 2px solid #000; background-color: #FFFF00; color: #000;">
+            BRAK DANYCH Z OSTATNICH 28 DNI. IDŹ POTRENOWAĆ!
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ĆWICZENIE</th>
+                    <th>SUMA SERII</th>
+                    <th>SUMA POWTÓRZEŃ</th>
+                    <th>ŚREDNI CIĘŻAR</th>
+                    <th>MAX CIĘŻAR</th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td style="font-weight: bold; color: #0000AA;">@item.NazwaCwiczenia</td>
+                    <td>@item.IloscSerii</td>
+                    <td>@item.LacznaIloscPowtorzen</td>
+                    <td>@Math.Round(item.SrednieObciazenie, 1) kg</td>
+                    <td>@item.MaksymalneObciazenie kg</td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    }
+</div>
