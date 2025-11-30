@@ -1,0 +1,67 @@
+@model BeFit.Models.SesjaTreningowa
+
+@{ ViewData["Title"] = "Panel Sesji"; }
+
+<div class="retro-box">
+    <div style="background-color: #000; color: #fff; padding: 10px; margin-bottom: 20px;">
+        <h2 style="margin: 0;">:: SESJA: @Model.Data.ToShortDateString() ::</h2>
+        <p style="margin: 0; color: #FFFF00;">NOTATKA: @Model.Komentarz</p>
+    </div>
+
+    <div class="text-center mb-4">
+        <a asp-controller="CwiczeniaWSesji" asp-action="Create" asp-route-sesjaId="@Model.Id" class="btn btn-success btn-lg" style="width: 100%;">
+            [ + DODAJ ĆWICZENIE DO TEJ SESJI ]
+        </a>
+    </div>
+
+    <h3 style="border-bottom: 2px solid #000;">WYKONANE ĆWICZENIA:</h3>
+
+    @if (Model.Cwiczenia != null && Model.Cwiczenia.Any())
+    {
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th style="width: 30%">ĆWICZENIE</th>
+                    <th style="width: 20%">SERIE / POWT.</th>
+                    <th style="width: 20%">CIĘŻAR</th>
+                    <th style="width: 20%">CARDIO</th>
+                    <th style="width: 10%">AKCJA</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cwiczenia)
+                {
+                    <tr>
+                        <td style="font-weight: bold; color: #0000AA;">@item.TypCwiczenia?.Nazwa</td>
+                        <td>@item.LiczbaPowtorzen</td>
+                        <td>
+                            @if(item.Obciazenie > 0) { <span>@item.Obciazenie KG</span> } else { <span>---</span> }
+                        </td>
+                        <td>
+                            @if(!string.IsNullOrEmpty(item.Tempo) || !string.IsNullOrEmpty(item.ZakresTetna))
+                            {
+                                <div style="font-size: 0.8em;">
+                                    T: @item.Tempo <br> HR: @item.ZakresTetna
+                                </div>
+                            }
+                            else { <span>---</span> }
+                        </td>
+                        <td>
+                            <a asp-controller="CwiczeniaWSesji" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">X</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" style="background-color: #FFFF00; color: #000; border: 2px solid #000;">
+            BRAK WPISÓW. KLIKNIJ ZIELONY PRZYCISK POWYŻEJ.
+        </div>
+    }
+
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-primary"><< POWRÓT DO LISTY</a>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="margin-top: 50px;">
+    
+    <h1 class="display-4">Witaj w BeFit <span class="cursor-blink">_</span></h1>
+    <p class="lead">System operacyjny v.1.0 załadowany poprawnie.</p>
+
+    <div class="ascii-art">
+      .---. 
+     /_____\
+     ( ' ' )   GOTOWY NA TRENING?
+      \_-_/
+      [ " ]
+     /| . |\
+    / | . | \   [ START ] [ LOAD ]
+      | . |
+     /_____\
+    (_______)
+    </div>
+
+    <div class="card p-4 mt-4" style="background: transparent; border: 2px solid var(--border-color); box-shadow: var(--shadow);">
+        <h3>> CEL MISJI:</h3>
+        <p class="text-left">
+            [1] Zarejestruj się w systemie.<br>
+            [2] Dodaj swoje sesje treningowe.<br>
+            [3] Analizuj statystyki i zwiększaj siłę.
+        </p>
+        
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-primary btn-lg mt-3" asp-area="Identity" asp-page="/Account/Register">ROZPOCZNIJ GRĘ</a>
+        }
+        else
+        {
+            <a class="btn btn-primary btn-lg mt-3" asp-controller="SesjeTreningowe" asp-action="Create">NOWA SESJA</a>
+        }
+    </div>
+</div>

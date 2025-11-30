@@ -1,0 +1,61 @@
+@model BeFit.Models.CwiczenieWSesji
+
+@{ ViewData["Title"] = "Dodaj Ćwiczenie"; }
+
+<div class="retro-box">
+    <h2>:: NOWY WPIS ::</h2>
+    <hr style="border-color: #000;">
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="form-group mb-3">
+            <label class="control-label">WYBRANA SESJA (DATA)</label>
+            <select asp-for="SesjaTreningowaId" class ="form-control" asp-items="ViewBag.SesjaTreningowaId" style="pointer-events: none; background-color: #DDD;"></select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="TypCwiczeniaId" class="control-label">WYBIERZ ĆWICZENIE Z BAZY</label>
+            <select asp-for="TypCwiczeniaId" class ="form-control" asp-items="ViewBag.TypCwiczeniaId"></select>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="p-3 mb-3" style="border: 2px solid #000; background: #EEE;">
+                    <h4 style="color: #000;">DANE SIŁOWE</h4>
+                    <div class="form-group">
+                        <label asp-for="LiczbaPowtorzen" class="control-label">LICZBA POWTÓRZEŃ / SERII</label>
+                        <input asp-for="LiczbaPowtorzen" class="form-control" value="1" />
+                        <span asp-validation-for="LiczbaPowtorzen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label asp-for="Obciazenie" class="control-label">OBCIĄŻENIE (KG)</label>
+                        <input asp-for="Obciazenie" class="form-control" value="0" />
+                        <span asp-validation-for="Obciazenie" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="p-3 mb-3" style="border: 2px solid #000; background: #EEE;">
+                    <h4 style="color: #000;">DANE CARDIO (OPCJONALNE)</h4>
+                    <div class="form-group">
+                        <label asp-for="Tempo" class="control-label">TEMPO (NP. 5:30)</label>
+                        <input asp-for="Tempo" class="form-control" />
+                        <span asp-validation-for="Tempo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label asp-for="ZakresTetna" class="control-label">TĘTNO (NP. 140-160)</label>
+                        <input asp-for="ZakresTetna" class="form-control" />
+                        <span asp-validation-for="ZakresTetna" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 text-center">
+            <input type="submit" value="ZAPISZ WPIS [ENTER]" class="btn btn-success btn-lg" />
+            <a asp-controller="SesjeTreningowe" asp-action="Index" class="btn btn-danger btn-lg">ANULUJ</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Start";
+}
+
+<div class="text-center" style="margin-top: 50px;">
+    <div class="retro-box">
+        <h1 class="display-4">WITAJ W SYSTEMIE BEFIT</h1>
+        <p>REJESTR TRENINGOWY v.1.0</p>
+        <hr style="border: 2px solid #000;">
+        
+        
+        <pre style="font-family: 'VT323', monospace; font-weight: bold; font-size: 16px; line-height: 16px; color: #0000AA;">
+  ____       _____ _ _   
+ |  _ \     |  ___(_) |  
+ | |_) | ___| |_   _| |_ 
+ |  _ < / _ \  _| | | __|
+ | |_) |  __/ |   | | |_ 
+ |____/ \___|_|   |_|\__|
+                         
+ [ TRAINING MANAGEMENT SYSTEM ]
+        </pre>
+        
+        <p class="text-left mt-4">
+            > SYSTEM GOTOWY.<br>
+            > BAZA DANYCH: ZAŁADOWANO ĆWICZENIA.<br>
+            > OCZEKIWANIE NA UŻYTKOWNIKA...
+        </p>
+
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <a class="btn btn-success btn-lg mt-3" asp-controller="SesjeTreningowe" asp-action="Index">ROZPOCZNIJ TRENING [ENTER]</a>
+        }
+        else
+        {
+            <div class="mt-4">
+                <p>> ZALOGUJ SIĘ ABY UZYSKAĆ DOSTĘP:</p>
+                <a class="btn btn-primary btn-lg" asp-area="Identity" asp-page="/Account/Login">LOGOWANIE</a>
+                <a class="btn btn-secondary btn-lg" asp-area="Identity" asp-page="/Account/Register">REJESTRACJA</a>
+            </div>
+        }
+    </div>
+</div>
