@@ -14,13 +14,13 @@
             @Html.DisplayNameFor(model => model.SesjaTreningowa)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SesjaTreningowa.Id)
+            @(Model.SesjaTreningowa?.Id.ToString() ?? string.Empty)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.TypCwiczenia)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypCwiczenia.Nazwa)
+            @(Model.TypCwiczenia?.Nazwa ?? string.Empty)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.LiczbaPowtorzen)

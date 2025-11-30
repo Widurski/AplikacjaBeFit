@@ -11,15 +11,59 @@ a { color: #f81eed; text-decoration: none; }
 a:hover { color: #00FF00; text-decoration: underline; background-color: #000000; }
 
 .navbar {
-    background-color: #AAAAAA;
+    background-color: #AAAAAA !important;
     border-bottom: 4px solid #3b3737;
     padding: 10px;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand {
     color: #000000 !important;
     font-weight: bold;
     text-transform: uppercase;
+    white-space: nowrap;
+    margin-right: auto;
+}
+
+.navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 !important;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-left: auto !important;
+}
+
+.navbar-nav .nav-link {
+    color: #000000 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar-nav .btn-link {
+    color: #000000 !important;
+    text-decoration: none;
+    padding: 0;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'VT323', monospace;
+    font-size: inherit;
 }
 
 .container {
@@ -86,4 +130,9 @@ a:hover { color: #00FF00; text-decoration: underline; background-color: #000000;
     background-color: #AAAAAA;
     color: #000;
     border-top: 4px solid #000;
+}
+
+.navbar .navbar-nav .nav-link,
+.text-dark {
+    color: #000000 !important;
 }

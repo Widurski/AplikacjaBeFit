@@ -9,7 +9,7 @@ namespace BeFit.Models
         [Display(Name = "Nazwa ćwiczenia")]
         [Required(ErrorMessage = "Proszę podać nazwę ćwiczenia")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Nazwa musi mieć od 3 do 50 znaków")]
-        public string Nazwa { get; set; }
+        public string Nazwa { get; set; } = string.Empty;
 
         [Display(Name = "Opis techniki")]
         public string? Opis { get; set; }

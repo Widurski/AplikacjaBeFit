@@ -31,10 +31,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SesjaTreningowa.Id)
+                @(item.SesjaTreningowa?.Id.ToString() ?? string.Empty)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypCwiczenia.Nazwa)
+                @(item.TypCwiczenia?.Nazwa ?? string.Empty)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LiczbaPowtorzen)
